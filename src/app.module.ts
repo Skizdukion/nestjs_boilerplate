@@ -27,8 +27,8 @@ import { DataSource } from 'typeorm';
         return dataSource;
       },
     }),
-
     UsersModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

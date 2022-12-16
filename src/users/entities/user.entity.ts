@@ -14,7 +14,6 @@ import {
 import { Role } from '../../roles/entities/role.entity';
 import * as bcrypt from 'bcryptjs';
 import { EntityHelper } from 'src/utils/entity-helper';
-import { AuthProvidersEnum } from 'src/auth/auth-providers.enum';
 import { Exclude, Expose } from 'class-transformer';
 
 @Entity()
@@ -46,15 +45,6 @@ export class User extends EntityHelper {
       this.password = await bcrypt.hash(this.password, salt);
     }
   }
-
-  @Column({ default: AuthProvidersEnum.email })
-  @Expose({ groups: ['me', 'admin'] })
-  provider: string;
-
-  @Index()
-  @Column({ nullable: true })
-  @Expose({ groups: ['me', 'admin'] })
-  socialId: string | null;
 
   @Index()
   @Column({ nullable: true })
