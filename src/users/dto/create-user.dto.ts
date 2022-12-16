@@ -8,7 +8,7 @@ import {
   MinLength,
   Validate,
 } from 'class-validator';
-import { IsNotExist } from '../../utils/validators/is-not-exists.validator';;
+import { IsNotExist } from '../../utils/validators/is-not-exists.validator';
 import { IsExist } from '../../utils/validators/is-exists.validator';
 
 export class CreateUserDto {

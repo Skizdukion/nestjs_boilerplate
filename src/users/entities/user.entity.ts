@@ -69,7 +69,6 @@ export class User extends EntityHelper {
   })
   role?: Role | null;
 
-
   @Column({ nullable: true })
   @Index()
   @Exclude({ toPlainOnly: true })

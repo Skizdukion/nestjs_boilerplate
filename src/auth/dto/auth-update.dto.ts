@@ -3,7 +3,6 @@ import { IsNotEmpty, IsOptional, MinLength, Validate } from 'class-validator';
 import { IsExist } from '../../utils/validators/is-exists.validator';
 
 export class AuthUpdateDto {
-
   @ApiProperty({ example: 'John' })
   @IsOptional()
   @IsNotEmpty({ message: 'mustBeNotEmpty' })
