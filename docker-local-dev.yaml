@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
-      
+
   adminer:
     image: adminer
     restart: always
@@ -20,10 +20,3 @@ services:
     image: redis:7-alpine
     ports:
       - 6379:6379
-
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - ${APP_PORT}:${APP_PORT}

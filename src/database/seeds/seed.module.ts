@@ -6,7 +6,6 @@ import databaseConfig from 'src/config/database.config';
 import { DataSource } from 'typeorm';
 import { TypeOrmConfigService } from '../typeorm-config.service';
 import { RoleSeedModule } from './role/role-seed.module';
-import { StatusSeedModule } from './status/status-seed.module';
 import { UserSeedModule } from './user/user-seed.module';
 
 @Module({
@@ -24,7 +23,6 @@ import { UserSeedModule } from './user/user-seed.module';
       },
     }),
     RoleSeedModule,
-    StatusSeedModule,
     UserSeedModule,
   ],
 })
