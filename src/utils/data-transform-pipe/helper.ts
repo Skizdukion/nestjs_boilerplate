@@ -1,4 +1,4 @@
-import { TransformFnParams } from "class-transformer";
+import { TransformFnParams } from 'class-transformer';
 
 export function trimStringArray(params: TransformFnParams) {
   const trimStringArray: string[] = [];

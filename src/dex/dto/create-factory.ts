@@ -1,10 +1,7 @@
 import { Transform } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
 import { Role } from '../../roles/entities/role.entity';
-import {
-  IsNotEmpty,
-  Validate,
-} from 'class-validator';
+import { IsNotEmpty, Validate } from 'class-validator';
 import { IsValidAddress } from 'src/utils/validators/is-address.validator';
 
 export class CreateFactoryDto {

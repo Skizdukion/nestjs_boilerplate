@@ -57,7 +57,6 @@ export class AuthController {
     return this.service.confirmEmail(confirmEmailDto.hash);
   }
 
-
   @ApiBearerAuth()
   @SerializeOptions({
     groups: ['me'],

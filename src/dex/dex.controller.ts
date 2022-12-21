@@ -35,9 +35,7 @@ import { Web3Service } from 'src/web3/web3.service';
 })
 @Controller('dex')
 export class DexController {
-  constructor(
-    private readonly dexService: DexService,
-  ) {}
+  constructor(private readonly dexService: DexService) {}
 
   @Post('/factory')
   @Roles(RoleEnum.admin)
