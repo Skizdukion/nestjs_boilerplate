@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-set -e
-
-/opt/wait-for-it.sh postgres:5432
-npm run migration:run
-npm run seed:run
-npm run start:prod
+docker compose -f docker-local-dev.yaml up -d
+sleep 10
+yarn run start:dev

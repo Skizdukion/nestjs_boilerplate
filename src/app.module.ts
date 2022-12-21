@@ -12,6 +12,8 @@ import { I18nModule } from 'nestjs-i18n/dist/i18n.module';
 import { HeaderResolver } from 'nestjs-i18n';
 import { TypeOrmConfigService } from './database/typeorm-config.service';
 import { DataSource } from 'typeorm';
+import { DexModule } from './dex/dex.module';
+import { Web3Module } from './web3/web3.module';
 
 @Module({
   imports: [
@@ -29,6 +31,8 @@ import { DataSource } from 'typeorm';
     }),
     UsersModule,
     AuthModule,
+    DexModule,
+    Web3Module,
   ],
 })
 export class AppModule {}

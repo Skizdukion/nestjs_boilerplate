@@ -20,6 +20,20 @@ export class UserSeedService {
       },
     });
 
+    if (countAdmin === 0) {
+      await this.repository.save(
+        this.repository.create({
+          email: 'admin@gmail.com',
+          password: 'matkhau123',
+          firstName: 'Long',
+          lastName: 'Pham',
+          role: {
+            id: 1,
+          },
+        }),
+      );
+    }
+
     const countUser = await this.repository.count({
       where: {
         role: {
@@ -27,5 +41,19 @@ export class UserSeedService {
         },
       },
     });
+
+    if (countUser === 0) {
+      await this.repository.save(
+        this.repository.create({
+          email: 'user@gmail.com',
+          password: 'matkhau123',
+          firstName: 'GA',
+          lastName: 'VCL',
+          role: {
+            id: 2,
+          },
+        }),
+      );
+    }
   }
 }
