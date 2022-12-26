@@ -28,7 +28,7 @@ export class UserSeedService {
           firstName: 'Long',
           lastName: 'Pham',
           role: {
-            id: 1,
+            id: 2,
           },
         }),
       );
@@ -50,7 +50,7 @@ export class UserSeedService {
           firstName: 'GA',
           lastName: 'VCL',
           role: {
-            id: 2,
+            id: 1,
           },
         }),
       );

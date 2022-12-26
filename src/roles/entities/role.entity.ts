@@ -5,9 +5,6 @@ import { EntityHelper } from 'src/utils/entity-helper';
 
 @Entity()
 export class Role extends EntityHelper {
-  @ApiProperty({ example: 1 })
-  @PrimaryColumn()
-  id: number;
 
   @Allow()
   @ApiProperty({ example: 'Admin' })

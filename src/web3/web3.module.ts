@@ -8,5 +8,6 @@ import { Network } from './entities/network.entity';
   imports: [TypeOrmModule.forFeature([Network])],
   providers: [Web3Service],
   controllers: [Web3Controller],
+  exports: [Web3Service],
 })
 export class Web3Module {}

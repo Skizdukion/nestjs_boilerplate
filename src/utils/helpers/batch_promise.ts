@@ -159,7 +159,7 @@ export class PromiseManager<T> {
           delete this.errorsIndex[jindex];
         }
         if (element.status == 'rejected') {
-          records.counts = records.counts++;
+          records.counts = records.counts + 1;
           if (records.counts > this.maxRetries) {
             delete this.errorsIndex[jindex];
           } else {

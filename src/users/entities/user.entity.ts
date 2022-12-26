@@ -18,8 +18,6 @@ import { Exclude, Expose } from 'class-transformer';
 
 @Entity()
 export class User extends EntityHelper {
-  @PrimaryGeneratedColumn()
-  id: number;
 
   @Column({ unique: true, nullable: true })
   @Expose({ groups: ['me', 'admin'] })

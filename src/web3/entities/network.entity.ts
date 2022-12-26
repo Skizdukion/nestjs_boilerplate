@@ -20,13 +20,13 @@ export class Network extends EntityHelper {
   @Column('text', { array: true, default: [], nullable: false })
   rpcUrl: string[];
 
-  currentRpc: ethers.providers.JsonRpcProvider | null;
+  private currentRpc: ethers.providers.JsonRpcProvider;
 
-  @AfterLoad()
-  public loadHttpRpc(): void {
-    if (this.rpcUrl.length > 0) {
+  getCurrentRpc() {
+    if (!this.currentRpc) {
       this.currentRpc = new ethers.providers.JsonRpcProvider(this.rpcUrl[0]);
     }
+    return this.currentRpc;
   }
 
   public reloadRpc() {
@@ -44,5 +44,10 @@ export class Network extends EntityHelper {
         this.rpcUrl[_newIndex],
       );
     }
+  }
+
+  stripResponseData(): void {
+    super.stripResponseData();
+    delete this.currentRpc;
   }
 }

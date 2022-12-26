@@ -19,6 +19,7 @@ export class RoleSeedService {
     });
 
     if (countUser === 0) {
+      console.log('CREATE USER ROLE');
       await this.repository.save(
         this.repository.create({
           id: RoleEnum.user,
@@ -33,7 +34,19 @@ export class RoleSeedService {
       },
     });
 
+    const admin = await this.repository.find({
+      where: {
+        id: RoleEnum.admin,
+      },
+    });
+
+    console.log(RoleEnum.admin);
+
+    console.log(admin);
+
     if (countAdmin === 0) {
+      console.log('CREATE ADMIN ROLE');
+
       await this.repository.save(
         this.repository.create({
           id: RoleEnum.admin,

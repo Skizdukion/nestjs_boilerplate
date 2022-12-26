@@ -14,15 +14,16 @@ import {
 import { EntityHelper } from 'src/utils/entity-helper';
 import { Factory } from './factory.entity';
 import { Token } from './token.entity';
+import { UniswapProtocolPair } from 'src/abi/UniswapProtocolPair';
+import { ethers } from 'ethers';
+import { Network } from 'src/web3/entities/network.entity';
+import PairAbi from 'src/abi/UniswapProtocolPair.json';
+import { ContractEntity } from 'src/web3/entities/contract.entity';
 
 @Entity()
 @Unique('UQ_ADDRESS_P', ['address', 'factory'])
-export class Pool extends EntityHelper {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ nullable: false, unique: true })
-  address: string;
+export class Pool extends ContractEntity<UniswapProtocolPair> {
+  abi: ethers.ContractInterface = PairAbi;
 
   @Index()
   @ManyToOne(() => Token, {
@@ -52,19 +53,4 @@ export class Pool extends EntityHelper {
 
   @Column({ default: 0 })
   indexCount: number;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date;
-
-  @BeforeInsert()
-  @BeforeUpdate()
-  async lowercaseAddress() {
-    this.address = this.address.toLowerCase();
-  }
 }

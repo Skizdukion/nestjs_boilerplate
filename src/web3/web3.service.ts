@@ -11,6 +11,8 @@ import { OnModuleInit } from '@nestjs/common/interfaces';
 @Injectable()
 export class Web3Service implements OnModuleInit {
   private networkCache: Map<number, Network> = new Map();
+  private contractCache: Map<string, ethers.Contract> = new Map();
+  private networkContractMapping: Map<number, ethers.Contract[]> = new Map();
 
   constructor(
     @InjectRepository(Network) private networkRepo: Repository<Network>,
@@ -28,6 +30,24 @@ export class Web3Service implements OnModuleInit {
     });
 
     this.networkCache.set(chainId, _network);
+  }
+
+  async reloadRpc(chainId: number) {
+    const _network = this.networkCache.get(chainId);
+    if (_network) {
+      _network.reloadRpc();
+    }
+
+    const _relatedContracts = this.networkContractMapping.get(chainId);
+
+    for (let index = 0; index < _relatedContracts.length; index++) {
+      let element = _relatedContracts[index];
+      element = new ethers.Contract(
+        element.address,
+        element.interface,
+        _network.getCurrentRpc(),
+      );
+    }
   }
 
   public getNetworkFromChainId(chainId: number) {

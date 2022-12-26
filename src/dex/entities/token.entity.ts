@@ -17,9 +17,6 @@ import { Network } from '../../web3/entities/network.entity';
 @Entity()
 @Unique('UQ_ADDRESS_T', ['address', 'network'])
 export class Token extends EntityHelper {
-  @PrimaryGeneratedColumn()
-  id: number;
-
   @Column({ nullable: false })
   address: string;
 
